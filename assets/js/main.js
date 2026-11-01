@@ -15,7 +15,7 @@
    "Book a strategy call" button opens it instead of scrolling to the form.
 --------------------------------------------------------------------------- */
 const CONFIG = {
-  FORM_ENDPOINT: "",
+  FORM_ENDPOINT: "https://formspree.io/f/meaarkeb",
   BOOKING_URL: "",
   WHATSAPP_NUMBER: "201113062879",
 };
