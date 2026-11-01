@@ -15,7 +15,7 @@
    "Book a strategy call" button opens it instead of scrolling to the form.
 --------------------------------------------------------------------------- */
 const CONFIG = {
-  FORM_ENDPOINT: "netlify",
+  FORM_ENDPOINT: "",
   BOOKING_URL: "",
   WHATSAPP_NUMBER: "201113062879",
 };
