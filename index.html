@@ -813,7 +813,8 @@
         </div>
 
         <div class="card form-card" data-reveal style="--d:80ms">
-          <form id="contact-form" novalidate>
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="website" novalidate>
+            <input type="hidden" name="form-name" value="contact">
             <div class="form-grid">
               <div class="field">
                 <label for="f-name">Full name<span class="req" aria-hidden="true">*</span></label>

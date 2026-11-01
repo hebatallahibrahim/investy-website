@@ -15,7 +15,7 @@
    "Book a strategy call" button opens it instead of scrolling to the form.
 --------------------------------------------------------------------------- */
 const CONFIG = {
-  FORM_ENDPOINT: "",
+  FORM_ENDPOINT: "netlify",
   BOOKING_URL: "",
   WHATSAPP_NUMBER: "201113062879",
 };
@@ -240,10 +240,14 @@ const CONFIG = {
     try {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 15000);
-      const res = await fetch(CONFIG.FORM_ENDPOINT, {
+      // "netlify" → Netlify Forms (submissions show in the Netlify dashboard → Forms)
+      const isNetlify = CONFIG.FORM_ENDPOINT === "netlify";
+      const res = await fetch(isNetlify ? "/" : CONFIG.FORM_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        headers: isNetlify
+          ? { "Content-Type": "application/x-www-form-urlencoded" }
+          : { "Content-Type": "application/json", Accept: "application/json" },
+        body: isNetlify ? new URLSearchParams({ "form-name": "contact", ...data }).toString() : JSON.stringify(data),
         signal: controller.signal,
       });
       clearTimeout(timer);
